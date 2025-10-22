@@ -1,0 +1,431 @@
+
+    
+    :root {
+      /* Colors */
+      --color-bg: #f8f9fa; 
+      --color-sidebar-bg: #ffffff;
+      --color-content-bg: #ffffff;
+      --color-text-primary: #212529; 
+      --color-text-secondary: #495057; 
+      --color-accent: #0d6efd; 
+      --color-accent-hover: #0b5ed7;
+      --color-AI-1: #4285F4;
+      --color-AI-2: #EA4335;
+      --color-AI-3: #FBBC05;
+      --color-AI-4: #34A853;
+      --color-border: #dee2e6;
+      --color-shadow: rgba(0, 0, 0, 0.05);
+     
+      /* Typography */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+      /* Layout */
+      --sidebar-width: 280px;
+      --header-height: 60px;
+     
+      /* Spacing */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+
+      /* UI */
+      --border-radius: 6px;
+      --shadow-sm: 0 1px 2px var(--color-shadow);
+      --shadow-md: 0 4px 8px var(--color-shadow);
+      --transition-fast: 0.2s ease-out;
+    }
+
+    /* 2. Global Resets & Base Styles */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 100%; 
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text-primary);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+      display: grid;
+      grid-template-rows: var(--header-height) 1fr;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      height: 100vh;
+      overflow: hidden; 
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: var(--space-md);
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--color-accent-hover);
+      text-decoration: underline;
+    }
+
+    /* 3. App Header (Mobile Menu Toggle) */
+    .app-header {
+      grid-column: 1 / -1; 
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+      padding: 0 var(--space-md);
+      background: var(--color-sidebar-bg);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1010; 
+    }
+   
+    .app-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--color-text-primary);
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 1.75rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-sm);
+      margin-left: -8px; 
+      color: var(--color-text-secondary);
+    }
+    .menu-btn:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* 4. Sidebar Navigation */
+    .sidebar {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+      background: var(--color-sidebar-bg);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+      overflow-y: auto; 
+      z-index: 1000;
+      transition: transform var(--transition-fast);
+      transform: translateX(0); 
+    }
+
+    .sidebar-header h2 {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-md);
+    }
+
+   
+    
+    .AI-features {
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-lg);
+    }
+    .AI-features h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--space-md);
+    }
+    .AI-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: var(--space-sm) var(--space-md);
+      margin-bottom: var(--space-sm);
+      border: 1px solid var(--color-border);
+      background: #fff;
+      color: var(--color-text-primary);
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .AI-btn:hover:not(:disabled) {
+      background: var(--color-bg);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .AI-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .AI-btn .sparkle {
+      background: linear-gradient(90deg, var(--color-AI-1), var(--color-AI-2), var(--color-AI-3), var(--color-AI-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.1rem;
+    }
+    /* --- End AI --- */
+
+
+    /* Accordion Navigation Menu */
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .nav-section {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .nav-section:last-child {
+      border-bottom: none;
+    }
+    .nav-section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: var(--space-md) 0;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      list-style: none; /* Remove default <summary> marker */
+    }
+    .nav-section-title::-webkit-details-marker {
+      display: none; /* Hide marker in Safari */
+    }
+    .nav-section-title:hover {
+      color: var(--color-accent);
+    }
+    .nav-section-title::after {
+      content: '▸'; /* Collapsed state */
+      font-size: 0.9rem;
+      transition: transform var(--transition-fast);
+      transform: rotate(0deg);
+    }
+    .nav-section[open] > .nav-section-title::after {
+      transform: rotate(90deg); /* Expanded state */
+    }
+    .nav-links {
+      padding-left: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .nav-links li a {
+      display: block;
+      padding: var(--space-sm);
+      margin-left: calc(-1 * var(--space-sm));
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      border-radius: var(--border-radius);
+      text-decoration: none;
+    }
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+    .nav-links li a.active {
+      background: #e9ecef;
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    /* 5. Main Content Area */
+    .content-area {
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
+      overflow-y: auto; 
+      padding: var(--space-xl);
+      background: var(--color-content-bg);
+      position: relative; 
+    }
+
+    /* 6. Markdown Content Styling (Defaults for preview) */
+    .content-area > *:first-child { margin-top: 0; }
+    .content-area h1 { font-size: 2.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-sm); }
+    .content-area h2 { font-size: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-sm); }
+    .content-area h3 { font-size: 1.5rem; }
+    .content-area p,
+    .content-area ul,
+    .content-area ol {
+      margin-bottom: var(--space-md);
+    }
+    .content-area ul, .content-area ol { padding-left: var(--space-lg); }
+    .content-area ul { list-style: disc; }
+    .content-area ol { list-style: decimal; }
+    .content-area pre {
+      font-family: var(--font-mono);
+      background: #2b2b2b; /* Matches github-dark */
+      padding: var(--space-md);
+      border-radius: var(--border-radius);
+      overflow-x: auto;
+      margin-bottom: var(--space-md);
+    }
+    .content-area code {
+      font-family: var(--font-mono);
+      background: #e9ecef;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .content-area pre code { background: transparent; padding: 0; }
+    .content-area blockquote {
+      margin: 0 0 var(--space-md) 0;
+      padding-left: var(--space-md);
+      border-left: 4px solid var(--color-border);
+      color: var(--color-text-secondary);
+      font-style: italic;
+    }
+
+    /* 7. Mobile Responsive Layout (max-width: 768px) */
+    @media (max-width: 768px) {
+      body {
+        grid-template-columns: 1fr;
+      }
+      .menu-btn {
+        display: block; 
+      }
+      .app-title {
+        display: none; 
+      }
+      .sidebar {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        width: var(--sidebar-width);
+        max-width: 90%; 
+        border-right: 1px solid var(--color-border);
+        box-shadow: var(--shadow-md);
+        transform: translateX(-100%); 
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .sidebar.open {
+        transform: translateX(0); 
+      }
+      .content-area {
+        grid-column: 1 / -1; 
+      }
+      .sidebar-overlay {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 999; 
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+      .sidebar-overlay.open {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+   
+    /* --- NEW: Modal Styles --- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-fast), visibility var(--transition-fast);
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal {
+      background: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.95);
+      transition: transform var(--transition-fast);
+    }
+    .modal-overlay.open .modal {
+      transform: scale(1);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-md) var(--space-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    .modal-close-btn {
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1;
+      background: transparent;
+      border: none;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+    }
+    .modal-close-btn:hover {
+      color: var(--color-text-primary);
+    }
+    .modal-body {
+      padding: var(--space-lg);
+      overflow-y: auto;
+    }
+    /* Use content-area styles for modal body */
+    .modal-body > *:first-child { margin-top: 0; }
+    .modal-body h1, .modal-body h2, .modal-body h3 { font-size: 1.2rem; border-bottom: none; }
+    .modal-body p, .modal-body ul, .modal-body ol { margin-bottom: var(--space-md); }
+    .modal-body ul, .modal-body ol { padding-left: var(--space-lg); }
+    .modal-body ul { list-style: disc; }
+    .modal-body ol { list-style: decimal; }
+    .modal-body pre { font-size: 0.9rem; }
+    .modal-body code { font-size: 0.9rem; }
+   
+    /* Loading Spinner */
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--color-border);
+      border-bottom-color: var(--color-accent);
+      border-radius: 50%;
+      display: block;
+      margin: var(--space-xl) auto;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* --- End Modal --- */
+  
