@@ -4,19 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReMarked</title>
+
   <link rel="stylesheet" type="text/css" href="main.css">
-  <!-- Highlight.js CSS -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 
-  <!-- Marked.js -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- Highlight.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
- 
-
-  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
@@ -28,8 +24,7 @@
 </head>
 <body>
   
-
-  <!-- Header with Mobile Toggle -->
+  <!-- Header -->
   <header class="app-header">
     <button
       class="menu-btn"
@@ -43,96 +38,54 @@
     <div class="app-title">Documentation Viewer</div>
   </header>
 
-  <!-- Sidebar (Navigation) -->
+  <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <h2>Navigation</h2>
      
-       
+      <!-- File Input -->
+      <label for="file_input" class="file-input-label">
+        Upload a file...
+      </label>
+      <input type="file" name="file_input" id="file_input">
      
-      <!-- NEW: AI Features Section -->
-      <div class="AI-features">
-        <h3>AI Features</h3>
-        <button class="AI-btn" id="summarize-btn" disabled>
-          <span class="sparkle">✨</span> Summarize
+      <!-- AI Features -->
+      <div class="gemini-features">
+        <h3>AI Tools</h3>
+        <button class="gemini-btn" id="summarize-btn" disabled>
+          <span class="sparkle">✨</span> Summarize Document
         </button>
-        <button class="AI-btn" id="qa-btn" disabled>
+        <button class="gemini-btn" id="qa-btn" disabled>
           <span class="sparkle">✨</span> Generate Q&A
         </button>
       </div>
     </div>
-
-    <!-- Accordion Navigation -->
-    <nav class="sidebar-nav" aria-label="Main Navigation">
-     
-      <details class="nav-section" open>         <summary class="nav-section-title">Les Suites Numériques</summary>
-        <ul class="nav-links">
-          <li><a href="#definitions">Définitions</a></li>
-          <li><a href="#types">Types</a></li>
-          <li><a href="#convergence">La Convergence</a></li>
-          <li><a href="#somme">La Somme</a></li>
-          <li><a href="#advanced">Advanced</a></li>
-          <li><a href="#extra">Extra</a></li>
-        </ul>
-      </details>
-
-      <details class="nav-section">
-        <summary class="nav-section-title">Autre Section 1</summary>
-        <ul class="nav-links">
-          <li><a href="#def1">Définitions</a></li>
-          <li><a href="#typ1">Types</a></li>
-          <li><a href="#conv1">La Convergence</a></li>
-          <li><a href="#som1">La Somme</a></li>
-          <li><a href="#adv1">Advanced</a></li>
-          <li><a href="#ext1">Extra</a></li>
-        </ul>
-      </details>
-
-      <details class="nav-section">
-        <summary class="nav-section-title">Autre Section 2</summary>
-        <ul class="nav-links">
-          <li><a href="#def2">Définitions</a></li>
-          <li><a href="#typ2">Types</a></li>
-          <li><a href="#conv2">La Convergence</a></li>
-          <li><a href="#som2">La Somme</a></li>
-          <li><a href="#adv2">Advanced</a></li>
-          <li><a href="#ext2">Extra</a></li>
-        </ul>
-      </details>
-
-    </nav>
   </aside>
 
-  
+  <!-- Main Content -->
   <main class="content-area" id="preview">
-    <!-- Default content -->
     <h1>Welcome!</h1>
-    <p>if you are having trouble , try refresh the page or report it</p>
+    <p>Please upload a Markdown file to get started.</p>
+    <p>Use the navigation menu on the left to explore your document sections once loaded. Then, use the ✨ AI tools to generate summaries or study questions.</p>
   </main>
  
-  <!-- Overlay for mobile menu -->
+  <!-- Sidebar Overlay -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-  <!-- NEW: Modal for AI Results -->
-  <div class="modal-overlay" id="AI-modal-overlay">
-    <div class="modal" id="AI-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+  <!-- Modal for AI Results -->
+  <div class="modal-overlay" id="gemini-modal-overlay">
+    <div class="modal" id="gemini-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
       <header class="modal-header">
         <h2 class="modal-title" id="modal-title">AI Result</h2>
         <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
       </header>
       <section class="modal-body" id="modal-body">
-        <!-- Content will be injected here -->
         <div class="loader"></div>
       </section>
     </div>
   </div>
 
-
-
-
-
   <script src="parser/main.js"></script>
-
 
 </body>
 </html>
