@@ -2,7 +2,7 @@
 let currentMarkdownText = "";
 let file_input = null;
 let get_content = null;
-const API_KEY = "GEMIMI-API-KEY";
+const API_KEY = "GEMINI-API-KEY";
 
 const file_link = "https://raw.githubusercontent.com/abdrrahim2007/abdrrahim2007/refs/heads/main/README.md";
 
