@@ -49,13 +49,13 @@ git clone https://github.com/abdrrahim2007/ReMarked.git
 cd ReMarked
 ```
 ## Confugure your API
--Open the parser/main.js file.
+1-Open the parser/main.js file.
 
 -Find the following line (near the top):
 ```javascript
 const API_KEY = "GEMINI-API-KEY";
 ```
--Replace it with your API key
+2-Replace it with your API key
 
 ## ⚙️ Configuration
 You can easily customize the default Markdown file that loads when the page is opened.
