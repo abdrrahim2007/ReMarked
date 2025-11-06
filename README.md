@@ -64,6 +64,6 @@ You can easily customize the default Markdown file that loads when the page is o
 
 ### 2. Find the file_link variable:
 ```javascript
-const file_link = "[https://raw.githubusercontent.com/abdrrahim2007/abdrrahim2007/refs/heads/main/README.md](https://raw.githubusercontent.com/abdrrahim2007/abdrrahim2007/refs/heads/main/README.md)";
+const file_link = "https://raw.githubusercontent.com/abdrrahim2007/abdrrahim2007/refs/heads/main/README.md";
 ```
 ### 3. Change the URL to point to any other raw Markdown file you want to load by default.
